@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALMUS - Sport Water</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home Page Screen -->
+    <div id="home-screen" class="screen active">
+        <div class="homepage-container" onclick="navigateTo('gouts')">
+            <img src="assets/gifHomepage.gif" alt="ALMUS Sport Water" class="homepage-image">
+        </div>
+    </div>
+
+    <!-- Flavors List Screen -->
+    <div id="gouts-screen" class="screen">
+        <div class="App-header background-image">
+            <div class="bgTransparent">
+                <h1 class="Heading">Choisissez votre goût</h1>
+            </div>
+            <div class="wrapper">
+                <div class="item gout-item" data-saveur="1" data-img="assets/1.png">
+                    <img src="assets/1.png" alt="Cassis" class="gout-image">
+                </div>
+                <div class="item gout-item" data-saveur="2" data-img="assets/12.png">
+                    <img src="assets/12.png" alt="Pastèque" class="gout-image">
+                </div>
+                <div class="item gout-item" data-saveur="3" data-img="assets/123.png">
+                    <img src="assets/123.png" alt="Fruit de la Passion" class="gout-image">
+                </div>
+                <div class="item gout-item" data-saveur="4" data-img="assets/1234.png">
+                    <img src="assets/1234.png" alt="Figue de Barbarie" class="gout-image">
+                </div>
+                <div class="item gout-item" data-saveur="5" data-img="assets/12345.png">
+                    <img src="assets/12345.png" alt="Citron Vert" class="gout-image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Intensity Level Screen -->
+    <div id="intensity-screen" class="screen">
+        <div class="App-header background-image">
+            <div class="bgTransparent">
+                <h1 class="Heading">Choisissez l'intensité</h1>
+            </div>
+            <div class="intensity-container">
+                <div class="intensity-option" data-level="1">
+                    <img src="assets/faible.png" alt="Faible" class="intensity-image">
+                </div>
+                <div class="intensity-option" data-level="2">
+                    <img src="assets/moyenne.png" alt="Moyenne" class="intensity-image">
+                </div>
+                <div class="intensity-option" data-level="3">
+                    <img src="assets/fort.png" alt="Fort" class="intensity-image">
+                </div>
+            </div>
+            <div class="button-container">
+                <img src="assets/btn retour.png" alt="Retour" class="btn-back" onclick="navigateTo('gouts')">
+                <img src="assets/btn deguster.png" alt="Déguster" class="btn-deguster" id="btn-deguster">
+            </div>
+        </div>
+    </div>
+
+    <!-- Success/Progress Screen -->
+    <div id="success-screen" class="screen">
+        <div class="App-header background-image">
+            <div class="bgTransparent">
+                <h1 class="Heading">Préparation en cours...</h1>
+            </div>
+            <div class="success-content">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">0%</div>
+                </div>
+                <p class="success-message">Votre boisson est en préparation</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
