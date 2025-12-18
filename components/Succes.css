@@ -1,0 +1,43 @@
+@import url('https://fonts.cdnfonts.com/css/archivo-black');
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.Merci_paraghraphe {
+  font-family: 'Archivo Black', sans-serif;
+
+  position: absolute;
+  
+  width: 760px;
+  height: 300px;
+  word-spacing: 17px;
+  top: 35%;
+  left: 15%;
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+}
+.PROCHAINE{
+  position: absolute;
+  top: 55%;
+  left: 15%;
+  font-family: 'Archivo Black', sans-serif;
+
+  width: 750px;
+  height: 300px;
+  word-spacing: 20px;
+
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+}
+
+.progressBar{
+    position: absolute;
+    top: 68%;
+    left: 45%;
+  transform: translate(-50%, -50%);
+    width: 30%;
+}

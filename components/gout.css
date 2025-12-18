@@ -1,0 +1,30 @@
+.Cassis{
+    position: absolute;
+    left: 5%;
+    top:25%
+}
+.goutHover:hover{transform: scale(1.2);}
+.PecheetFruitdelaPassion{
+    position: absolute;
+    left: 5%;
+    top:50%
+}
+.FiguedeBarbarie{
+    position: absolute;
+    left: 49%;
+    top:50%;
+    width:50%;
+    height:10%
+}
+.Pasteque{
+    position: absolute;
+    left: 27%;
+    top:75%
+}
+.CitronVert{
+    height:10%;
+    position: absolute;
+    left: 49%;
+    top:25%;
+    width:50%
+}

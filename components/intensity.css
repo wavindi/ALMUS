@@ -1,0 +1,39 @@
+
+.bins{
+    position: absolute;
+    top: 30%;
+    left: 0%;
+     width: max-content;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly; 
+     
+       
+}
+.bin {
+    
+    width: 20%;
+}
+.bin:hover{
+    transform: scale(1.2);
+}
+.goBack{
+    position: absolute;
+   
+    left: 38px;
+    width: 12%;
+    bottom: 8%;
+    
+}
+.deguster{
+    position: absolute;
+    left: 32%;
+    top: 70%;
+    width: 35%;
+}
+.deguster:hover{
+    transform: scale(1.1);
+}
+.bin .selected {
+
+}
