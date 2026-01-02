@@ -1,0 +1,501 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background: linear-gradient(135deg, #1db8e8 0%, #4fc3f7 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.back-button {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+}
+
+.back-button img {
+    height: 50px;
+    width: auto;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+/* Main Title */
+.main-title {
+    text-align: center;
+    color: #0d47a1;
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: rgba(173, 216, 230, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 0 auto 60px;
+    max-width: 90%;
+}
+
+/* Intensity Selection Screen */
+.intensity-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 40px;
+}
+
+.intensity-option {
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.intensity-option:hover {
+    transform: scale(1.05);
+}
+
+.intensity-icon {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.intensity-icon:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Flavor Selection Screen */
+.flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.flavor-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.flavor-option:hover {
+    transform: scale(1.05);
+}
+
+.flavor-button-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.flavor-button-text {
+    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 15px 60px;
+    border-radius: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.flavor-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+/* Ingredients Screen */
+.info-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.info-card {
+    background: rgba(173, 216, 230, 0.7);
+    padding: 40px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    color: #0d47a1;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.info-card p {
+    margin-bottom: 20px;
+}
+
+.next-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.next-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Scanning Screen */
+.scanning-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    align-items: center;
+}
+
+.scanning-animation {
+    flex: 0 0 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fingerprint-placeholder {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+.fingerprint-icon {
+    font-size: 8rem;
+    z-index: 10;
+}
+
+.scanning-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info-box {
+    background: rgba(173, 216, 230, 0.7);
+    padding: 30px;
+    border-radius: 25px;
+    color: #0d47a1;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* Thank You Screen */
+.thankyou-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.preparation-animation {
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 120px;
+    height: 120px;
+    border: 10px solid rgba(255,255,255,0.3);
+    border-top: 10px solid #0d47a1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 30px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.preparation-animation h2 {
+    color: #0d47a1;
+    font-size: 2rem;
+}
+
+.thankyou-message {
+    background: rgba(173, 216, 230, 0.7);
+    padding: 40px;
+    border-radius: 30px;
+    color: #0d47a1;
+    text-align: center;
+}
+
+.thankyou-message h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.thankyou-message p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    font-weight: bold;
+    font-size: 1.1rem !important;
+}
+
+.farewell {
+    font-size: 1.5rem !important;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.taste-button-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.taste-button {
+    height: 80px;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.taste-button:hover {
+    transform: scale(1.1);
+}
+
+/* Nutrition Screen */
+.nutrition-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.nutrition-card {
+    background: white;
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.nutrition-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #0d47a1;
+    padding-bottom: 20px;
+}
+
+.nutrition-header h2 {
+    font-size: 3rem;
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #0d47a1;
+    margin-top: 10px;
+}
+
+.nutrition-table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nutrition-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nutrition-row.separator {
+    border-top: 2px solid #0d47a1;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+.nutrition-row .label {
+    font-size: 1.1rem;
+    color: #424242;
+    font-weight: 500;
+}
+
+.nutrition-row .value {
+    font-size: 1.1rem;
+    color: #0d47a1;
+    font-weight: bold;
+}
+
+.restart-button {
+    display: block;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.restart-button:hover {
+    transform: scale(1.05);
+}
+
+/* Wave Decoration */
+.wave-decoration {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wave-decoration img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .flavor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 2rem;
+        padding: 20px;
+    }
+
+    .scanning-container,
+    .thankyou-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .intensity-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .flavor-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .info-card,
+    .info-box {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTUS Sport Drink</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Screen 1: Intensity Selection -->
+    <div class="screen active" id="screen-intensity">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">CUSTOM INTENSITY: MILD, CLASSIC, OR STRONG?</h1>
+
+        <div class="intensity-container">
+            <div class="intensity-option" data-intensity="mild">
+                <img src="assets/faible.png" alt="Mild" class="intensity-icon">
+            </div>
+
+            <div class="intensity-option" data-intensity="classic">
+                <img src="assets/moyenne.png" alt="Classic" class="intensity-icon">
+            </div>
+
+            <div class="intensity-option" data-intensity="strong">
+                <img src="assets/fort.png" alt="Strong" class="intensity-icon">
+            </div>
+        </div>
+
+        <div class="wave-decoration">
+            <img src="assets/eau.png" alt="Wave">
+        </div>
+    </div>
+
+    <!-- Screen 2: Flavor Selection -->
+    <div class="screen" id="screen-flavor">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">SO, WHICH FLAVOR ARE WE GOING FOR? 😋</h1>
+
+        <div class="flavor-grid">
+            <div class="flavor-option" data-flavor="cassis">
+                <img src="assets/1.png" alt="Cassis" class="flavor-button-img">
+                <img src="assets/cassis.png" alt="Cassis" class="flavor-image">
+            </div>
+
+            <div class="flavor-option" data-flavor="citron">
+                <img src="assets/12345.png" alt="Citron" class="flavor-button-img">
+                <img src="assets/citron.png" alt="Lemon" class="flavor-image">
+            </div>
+
+            <div class="flavor-option" data-flavor="kiwi">
+                <div class="flavor-button-text">KIWI</div>
+                <img src="assets/kiwi.png" alt="Kiwi" class="flavor-image">
+            </div>
+
+            <div class="flavor-option" data-flavor="figue">
+                <img src="assets/1234.png" alt="Figue" class="flavor-button-img">
+                <img src="assets/orange.png" alt="Figue" class="flavor-image">
+            </div>
+
+            <div class="flavor-option" data-flavor="banane">
+                <div class="flavor-button-text">BANANE</div>
+                <img src="assets/banane.png" alt="Banana" class="flavor-image">
+            </div>
+
+            <div class="flavor-option" data-flavor="fraise">
+                <div class="flavor-button-text">FRAISE</div>
+                <img src="assets/fraise.png" alt="Strawberry" class="flavor-image">
+            </div>
+        </div>
+
+        <div class="wave-decoration">
+            <img src="assets/eau.png" alt="Wave">
+        </div>
+    </div>
+
+    <!-- Screen 3: Ingredients and Story -->
+    <div class="screen" id="screen-ingredients">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">INGREDIENTS AND STORY</h1>
+
+        <div class="info-content">
+            <div class="info-card">
+                <p>ALTUS SPORT DRINK IS A VITAMIN-ENRICHED, FLAVORED BEVERAGE, FREE FROM SUGAR AND ARTIFICIAL COLORING, DESIGNED TO COMBINE HEALTH, FRESHNESS, AND ENJOYMENT.</p>
+
+                <p>WITH AN UNLIMITED SUBSCRIPTION SYSTEM, CONSUMERS CAN ENJOY REFRESHING AND VITALITY-PACKED DRINKS EVERY DAY, ALL MONTH LONG.</p>
+
+                <p>AS A 100% TUNISIAN INNOVATION, ALTUS DEVELOPS SMART MACHINES THAT MAKE THE EXPERIENCE SIMPLE, FAST, AND MODERN: ONE SCAN, AND IT'S SERVED! 💧✨</p>
+            </div>
+
+            <div class="info-card ingredients-list">
+                <p>WATER, ACIDIFIER (CITRIC ACID), NATURAL FLAVOR, SWEETENERS (SUCRALOSE AND ACESULFAME K); VITAMIN BLEND: NIACIN (VITAMIN B3), PANTOTHENIC ACID (VITAMIN B5), PYRIDOXINE (VITAMIN B6), THIAMINE (VITAMIN B1); PRESERVATIVE (POTASSIUM SORBATE E202).</p>
+            </div>
+        </div>
+
+        <button class="next-button" onclick="showScreen('screen-scanning')">
+            <span>NEXT ▶▶▶</span>
+        </button>
+    </div>
+
+    <!-- Screen 4: Fingerprint Scanning -->
+    <div class="screen" id="screen-scanning">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">SCAN YOUR FINGER 👆</h1>
+
+        <div class="scanning-container">
+            <div class="scanning-animation">
+                <div class="fingerprint-placeholder">
+                    <div class="pulse-ring"></div>
+                    <div class="fingerprint-icon">🔍</div>
+                </div>
+            </div>
+
+            <div class="scanning-info">
+                <div class="info-box">
+                    <p>IF YOU ARE ALREADY A SUBSCRIBER, SIMPLY PASS YOUR FINGER OVER THE SCANNER. ✅</p>
+                </div>
+
+                <div class="info-box">
+                    <p>IF NOT, HEAD TO THE RECEPTION TO SIGN UP AND ENJOY OUR FLAVORED VITAMIN WATER, SUGAR-FREE AND ULTRA-REFRESHING! 💧✨</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="wave-decoration">
+            <img src="assets/eau.png" alt="Wave">
+        </div>
+    </div>
+
+    <!-- Screen 5: Thank You / Preparation -->
+    <div class="screen" id="screen-thankyou">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">YOUR DOSE OF FRESHNESS IS ON ITS WAY... 🍹💧</h1>
+
+        <div class="thankyou-container">
+            <div class="preparation-animation">
+                <div class="loading-spinner"></div>
+                <h2>PREPARING YOUR DRINK...</h2>
+            </div>
+
+            <div class="thankyou-message">
+                <h2>THANK YOU FOR CHOOSING ALTUS 💧</h2>
+                <p>YOU'RE ABOUT TO ENJOY OUR FLAVORED VITAMIN WATER – A UNIQUE EXPERIENCE BY ALTUS.</p>
+                <p class="highlight">ALTUS IS MUCH MORE THAN A DRINK: IT'S A 100% TUNISIAN COMPANY SPECIALIZED IN CREATING AND DEVELOPING SMART MACHINES.</p>
+                <p class="farewell">SEE YOU SOON! XOXO</p>
+            </div>
+        </div>
+
+        <div class="taste-button-container">
+            <img src="assets/btn-deguster.png" alt="Taste" class="taste-button" onclick="showScreen('screen-nutrition')">
+        </div>
+    </div>
+
+    <!-- Screen 6: Nutrition Facts -->
+    <div class="screen" id="screen-nutrition">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALTUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">NUTRITION FACTS (PER 400 ML)</h1>
+
+        <div class="nutrition-container">
+            <div class="nutrition-card">
+                <div class="nutrition-header">
+                    <h2>ALTUS</h2>
+                    <p class="subtitle">SPORT DRINK</p>
+                </div>
+
+                <div class="nutrition-table">
+                    <div class="nutrition-row">
+                        <span class="label">Serving</span>
+                        <span class="value">4.44 ml</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Energy</span>
+                        <span class="value">2,4 kcal</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Vitamin B1</span>
+                        <span class="value">0.48 mg</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Vitamin B3</span>
+                        <span class="value">7,2 mg</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Vitamin B5</span>
+                        <span class="value">2,72 mg</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Vitamin B6</span>
+                        <span class="value">0,64 mg</span>
+                    </div>
+                    <div class="nutrition-row separator">
+                        <span class="label">Fat</span>
+                        <span class="value">0 g</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">of which saturates</span>
+                        <span class="value">0 g</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Carbohydrate</span>
+                        <span class="value">0 g</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">of which sugars</span>
+                        <span class="value">0 g</span>
+                    </div>
+                    <div class="nutrition-row">
+                        <span class="label">Salt</span>
+                        <span class="value">0 g</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="restart-button" onclick="resetApp()">
+            START AGAIN
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

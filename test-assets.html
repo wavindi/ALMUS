@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTUS - Asset Test (PNG)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-image {
+            margin: 10px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            display: inline-block;
+            background: white;
+        }
+        .test-image img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        .image-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+            word-break: break-all;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        h1 {
+            color: #1976d2;
+        }
+        h2 {
+            color: #0d47a1;
+            margin-top: 30px;
+        }
+        .instructions {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 ALTUS Asset Test - PNG Format</h1>
+
+    <div class="instructions">
+        <strong>✅ FIXED: Now using .PNG format!</strong><br>
+        All image paths have been updated from .jpg to .png<br>
+        Check below to see if your images load correctly now.
+    </div>
+
+    <div class="test-section">
+        <h2>📁 Required Files (PNG format):</h2>
+        <pre>
+assets/
+├── 1.png
+├── 1234.png
+├── 12345.png
+├── banane.png
+├── btn-deguster.png
+├── btn-retour.png
+├── cassis.png
+├── citron.png
+├── eau.png
+├── faible.png
+├── fort.png
+├── fraise.png
+├── kiwi.png
+├── logo.png
+├── moyenne.png
+└── orange.png
+        </pre>
+    </div>
+
+    <div class="test-section">
+        <h2>🖼️ Testing All PNG Images:</h2>
+
+        <h3>Navigation & Buttons</h3>
+        <div class="test-image">
+            <img src="assets/btn-retour.png" onerror="this.parentElement.innerHTML='<p class=error>❌ btn-retour.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/btn-retour.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/btn-deguster.png" onerror="this.parentElement.innerHTML='<p class=error>❌ btn-deguster.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/btn-deguster.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/logo.png" onerror="this.parentElement.innerHTML='<p class=error>❌ logo.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/logo.png</div>
+        </div>
+
+        <h3>Intensity Options</h3>
+        <div class="test-image">
+            <img src="assets/faible.png" onerror="this.parentElement.innerHTML='<p class=error>❌ faible.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/faible.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/moyenne.png" onerror="this.parentElement.innerHTML='<p class=error>❌ moyenne.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/moyenne.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/fort.png" onerror="this.parentElement.innerHTML='<p class=error>❌ fort.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/fort.png</div>
+        </div>
+
+        <h3>Flavor Buttons</h3>
+        <div class="test-image">
+            <img src="assets/1.png" onerror="this.parentElement.innerHTML='<p class=error>❌ 1.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/1.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/1234.png" onerror="this.parentElement.innerHTML='<p class=error>❌ 1234.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/1234.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/12345.png" onerror="this.parentElement.innerHTML='<p class=error>❌ 12345.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/12345.png</div>
+        </div>
+
+        <h3>Fruit Images</h3>
+        <div class="test-image">
+            <img src="assets/cassis.png" onerror="this.parentElement.innerHTML='<p class=error>❌ cassis.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/cassis.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/citron.png" onerror="this.parentElement.innerHTML='<p class=error>❌ citron.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/citron.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/kiwi.png" onerror="this.parentElement.innerHTML='<p class=error>❌ kiwi.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/kiwi.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/orange.png" onerror="this.parentElement.innerHTML='<p class=error>❌ orange.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/orange.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/banane.png" onerror="this.parentElement.innerHTML='<p class=error>❌ banane.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/banane.png</div>
+        </div>
+
+        <div class="test-image">
+            <img src="assets/fraise.png" onerror="this.parentElement.innerHTML='<p class=error>❌ fraise.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/fraise.png</div>
+        </div>
+
+        <h3>Background</h3>
+        <div class="test-image">
+            <img src="assets/eau.png" onerror="this.parentElement.innerHTML='<p class=error>❌ eau.png FAILED</p>'" onload="this.parentElement.querySelector('.image-label').classList.add('success')">
+            <div class="image-label">assets/eau.png</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>✅ If all images show green ✅:</h2>
+        <p>Perfect! Now open <strong>index.html</strong> and everything should work!</p>
+    </div>
+</body>
+</html>
