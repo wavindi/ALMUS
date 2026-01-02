@@ -3,18 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALTUS Sport Drink</title>
+    <title>ALMUS Sport Drink</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Screen 0: Welcome/Fingerprint PIN -->
+    <div class="screen active" id="screen-welcome">
+        <nav class="top-nav">
+            <div class="back-button" style="visibility: hidden;">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">WELCOME TO ALMUS 💧</h1>
+
+        <div class="welcome-container">
+            <div class="fingerprint-section">
+                <div class="fingerprint-scanner-main">
+                    <div class="pulse-ring"></div>
+                    <img src="assets/finger.png" alt="Fingerprint" class="fingerprint-icon-large">
+                </div>
+                <h2 class="scan-instruction">SCAN YOUR FINGER</h2>
+                <p class="scan-description">Place your finger on the scanner to begin</p>
+            </div>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="pin-section">
+                <h2 class="pin-title">ENTER YOUR PIN</h2>
+                <div class="pin-input-container">
+                    <input type="password" 
+                           id="pin-input" 
+                           class="pin-input" 
+                           placeholder="Enter 4-digit PIN" 
+                           maxlength="4" 
+                           pattern="[0-9]*"
+                           inputmode="numeric">
+                </div>
+                <button class="pin-submit-btn" onclick="verifyPin()">VERIFY</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Screen 1: Intensity Selection -->
-    <div class="screen active" id="screen-intensity">
+    <div class="screen" id="screen-intensity">
         <nav class="top-nav">
             <div class="back-button">
                 <img src="assets/btn-retour.png" alt="Back">
             </div>
             <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
             </div>
         </nav>
 
@@ -46,7 +89,7 @@
                 <img src="assets/btn-retour.png" alt="Back">
             </div>
             <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
             </div>
         </nav>
 
@@ -96,7 +139,7 @@
                 <img src="assets/btn-retour.png" alt="Back">
             </div>
             <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
             </div>
         </nav>
 
@@ -104,11 +147,11 @@
 
         <div class="info-content">
             <div class="info-card">
-                <p>ALTUS SPORT DRINK IS A VITAMIN-ENRICHED, FLAVORED BEVERAGE, FREE FROM SUGAR AND ARTIFICIAL COLORING, DESIGNED TO COMBINE HEALTH, FRESHNESS, AND ENJOYMENT.</p>
+                <p>ALMUS SPORT DRINK IS A VITAMIN-ENRICHED, FLAVORED BEVERAGE, FREE FROM SUGAR AND ARTIFICIAL COLORING, DESIGNED TO COMBINE HEALTH, FRESHNESS, AND ENJOYMENT.</p>
 
                 <p>WITH AN UNLIMITED SUBSCRIPTION SYSTEM, CONSUMERS CAN ENJOY REFRESHING AND VITALITY-PACKED DRINKS EVERY DAY, ALL MONTH LONG.</p>
 
-                <p>AS A 100% TUNISIAN INNOVATION, ALTUS DEVELOPS SMART MACHINES THAT MAKE THE EXPERIENCE SIMPLE, FAST, AND MODERN: ONE SCAN, AND IT'S SERVED! 💧✨</p>
+                <p>AS A 100% TUNISIAN INNOVATION, ALMUS DEVELOPS SMART MACHINES THAT MAKE THE EXPERIENCE SIMPLE, FAST, AND MODERN: ONE SCAN, AND IT'S SERVED! 💧✨</p>
             </div>
 
             <div class="info-card ingredients-list">
@@ -116,56 +159,19 @@
             </div>
         </div>
 
-        <button class="next-button" onclick="showScreen('screen-scanning')">
+        <button class="next-button" onclick="showScreen('screen-preparation')">
             <span>NEXT ▶▶▶</span>
         </button>
     </div>
 
-    <!-- Screen 4: Fingerprint Scanning -->
-    <div class="screen" id="screen-scanning">
+    <!-- Screen 4: Preparation / Thank You -->
+    <div class="screen" id="screen-preparation">
         <nav class="top-nav">
             <div class="back-button">
                 <img src="assets/btn-retour.png" alt="Back">
             </div>
             <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
-            </div>
-        </nav>
-
-        <h1 class="main-title">SCAN YOUR FINGER 👆</h1>
-
-        <div class="scanning-container">
-            <div class="scanning-animation">
-                <div class="fingerprint-placeholder">
-                    <div class="pulse-ring"></div>
-                    <div class="fingerprint-icon">🔍</div>
-                </div>
-            </div>
-
-            <div class="scanning-info">
-                <div class="info-box">
-                    <p>IF YOU ARE ALREADY A SUBSCRIBER, SIMPLY PASS YOUR FINGER OVER THE SCANNER. ✅</p>
-                </div>
-
-                <div class="info-box">
-                    <p>IF NOT, HEAD TO THE RECEPTION TO SIGN UP AND ENJOY OUR FLAVORED VITAMIN WATER, SUGAR-FREE AND ULTRA-REFRESHING! 💧✨</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="wave-decoration">
-            <img src="assets/eau.png" alt="Wave">
-        </div>
-    </div>
-
-    <!-- Screen 5: Thank You / Preparation -->
-    <div class="screen" id="screen-thankyou">
-        <nav class="top-nav">
-            <div class="back-button">
-                <img src="assets/btn-retour.png" alt="Back">
-            </div>
-            <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
             </div>
         </nav>
 
@@ -178,9 +184,9 @@
             </div>
 
             <div class="thankyou-message">
-                <h2>THANK YOU FOR CHOOSING ALTUS 💧</h2>
-                <p>YOU'RE ABOUT TO ENJOY OUR FLAVORED VITAMIN WATER – A UNIQUE EXPERIENCE BY ALTUS.</p>
-                <p class="highlight">ALTUS IS MUCH MORE THAN A DRINK: IT'S A 100% TUNISIAN COMPANY SPECIALIZED IN CREATING AND DEVELOPING SMART MACHINES.</p>
+                <h2>THANK YOU FOR CHOOSING ALMUS 💧</h2>
+                <p>YOU'RE ABOUT TO ENJOY OUR FLAVORED VITAMIN WATER – A UNIQUE EXPERIENCE BY ALMUS.</p>
+                <p class="highlight">ALMUS IS MUCH MORE THAN A DRINK: IT'S A 100% TUNISIAN COMPANY SPECIALIZED IN CREATING AND DEVELOPING SMART MACHINES.</p>
                 <p class="farewell">SEE YOU SOON! XOXO</p>
             </div>
         </div>
@@ -190,14 +196,14 @@
         </div>
     </div>
 
-    <!-- Screen 6: Nutrition Facts -->
+    <!-- Screen 5: Nutrition Facts -->
     <div class="screen" id="screen-nutrition">
         <nav class="top-nav">
             <div class="back-button">
                 <img src="assets/btn-retour.png" alt="Back">
             </div>
             <div class="logo">
-                <img src="assets/logo.png" alt="ALTUS Logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
             </div>
         </nav>
 
@@ -206,7 +212,7 @@
         <div class="nutrition-container">
             <div class="nutrition-card">
                 <div class="nutrition-header">
-                    <h2>ALTUS</h2>
+                    <h2>ALMUS</h2>
                     <p class="subtitle">SPORT DRINK</p>
                 </div>
 
