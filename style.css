@@ -345,11 +345,11 @@ html, body {
 /* Flavor Selection Screen */
 .flavor-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3vw;
-    max-width: 95vw;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vh 4vw;
+    max-width: 80vw;
     margin: 0 auto;
-    padding: 2vh 3vw;
+    padding: 4vh 3vw;
     height: calc(100vh - 22vh);
     align-content: center;
 }
@@ -652,8 +652,15 @@ html, body {
     }
 
     .flavor-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vh 4vw;
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 4vh 3vw;
+    height: calc(100vh - 22vh);
+    align-content: center;
+}
 
     .main-title {
         font-size: clamp(1.2rem, 4vw, 1.8rem);
@@ -680,5 +687,6 @@ html, body {
 @media (max-width: 480px) {
     .flavor-grid {
         grid-template-columns: 1fr;
+        gap: 3vh;
     }
 }

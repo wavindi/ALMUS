@@ -4,9 +4,17 @@ let selectedIntensity = null;
 let selectedFlavor = null;
 let userAuthenticated = false;
 let pinCode = '';
+let screenTimer = null; // Timer for auto-redirects
 
 function showScreen(screenId) {
     console.log('Showing screen:', screenId);
+
+    // Clear any existing timers
+    if (screenTimer) {
+        clearTimeout(screenTimer);
+        screenTimer = null;
+    }
+
     // Hide all screens
     document.querySelectorAll('.screen').forEach(screen => {
         screen.classList.remove('active');
@@ -17,6 +25,19 @@ function showScreen(screenId) {
     if (targetScreen) {
         targetScreen.classList.add('active');
         currentScreen = screenId;
+    }
+
+    // Auto-redirect timers
+    if (screenId === 'screen-preparation') {
+        // Redirect to splash after 6 seconds
+        screenTimer = setTimeout(() => {
+            resetApp();
+        }, 6000);
+    } else if (screenId === 'screen-nutrition') {
+        // Redirect to splash after 7 seconds
+        screenTimer = setTimeout(() => {
+            resetApp();
+        }, 7000);
     }
 }
 
@@ -46,7 +67,6 @@ function addPin(number) {
     if (pinCode.length < 4) {
         pinCode += number;
         updatePinDisplay();
-
         // Auto-submit when 4 digits are entered
         if (pinCode.length === 4) {
             setTimeout(submitPin, 300);
@@ -101,7 +121,6 @@ function goBack() {
         'screen-preparation',
         'screen-nutrition'
     ];
-
     const currentIndex = screenOrder.indexOf(currentScreen);
     if (currentIndex > 0) {
         showScreen(screenOrder[currentIndex - 1]);
@@ -113,7 +132,16 @@ function resetApp() {
     selectedFlavor = null;
     userAuthenticated = false;
     pinCode = '';
+    if (screenTimer) {
+        clearTimeout(screenTimer);
+        screenTimer = null;
+    }
     showScreen('screen-splash');
+}
+
+function goToNutrition() {
+    console.log('Going to nutrition screen');
+    showScreen('screen-nutrition');
 }
 
 // Initialize the app - SINGLE DOMContentLoaded
@@ -187,14 +215,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     console.log('Intensity listeners attached:', intensityOptions.length);
 
-    // 7. BACK BUTTONS
+    // 7. CALORIES BUTTON - Goes to nutrition screen
+    const caloriesBtn = document.getElementById('calories-btn');
+    if (caloriesBtn) {
+        caloriesBtn.addEventListener('click', function() {
+            console.log('Calories button clicked');
+            goToNutrition();
+        });
+        console.log('Calories button listener attached');
+    }
+
+    // 8. BACK BUTTONS
     const backButtons = document.querySelectorAll('.back-button');
     backButtons.forEach(button => {
         button.addEventListener('click', goBack);
     });
     console.log('Back button listeners attached:', backButtons.length);
 
-    // 8. CLOSE PIN TOAST when clicking outside
+    // 9. CLOSE PIN TOAST when clicking outside
     const pinToast = document.getElementById('pin-toast');
     if (pinToast) {
         pinToast.addEventListener('click', function(e) {
@@ -205,16 +243,14 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('PIN toast outside click listener attached');
     }
 
-    // 9. TOUCH FEEDBACK for mobile
+    // 10. TOUCH FEEDBACK for mobile
     const clickableElements = document.querySelectorAll(
-        '.intensity-option, .flavor-option, .back-button, .next-button, .taste-button, .restart-button, .pin-btn, .logo-corner, .splash-container, .fingerprint-full, .fingerprint-full-container'
+        '.intensity-option, .flavor-option, .back-button, .next-button, .taste-button, .restart-button, .pin-btn, .logo-corner, .splash-container, .fingerprint-full, .fingerprint-full-container, .calories-button'
     );
-
     clickableElements.forEach(element => {
         element.addEventListener('touchstart', function() {
             this.style.opacity = '0.7';
         });
-
         element.addEventListener('touchend', function() {
             this.style.opacity = '1';
         });
