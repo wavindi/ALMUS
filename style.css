@@ -686,7 +686,13 @@ html, body {
 
 @media (max-width: 480px) {
     .flavor-grid {
-        grid-template-columns: 1fr;
-        gap: 3vh;
-    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4vh 4vw;
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 4vh 3vw;
+    height: calc(100vh - 22vh);
+    align-content: center;
+}
 }

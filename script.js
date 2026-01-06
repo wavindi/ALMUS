@@ -195,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 5. FLAVOR SELECTION - Goes to INTENSITY screen
     const flavorOptions = document.querySelectorAll('.flavor-option');
+    console.log('Found flavor options:', flavorOptions.length);
     flavorOptions.forEach(option => {
         option.addEventListener('click', function() {
             selectedFlavor = this.dataset.flavor;
