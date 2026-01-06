@@ -7,78 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Screen 0: Welcome/Fingerprint PIN -->
-    <div class="screen active" id="screen-welcome">
-        <nav class="top-nav">
-            <div class="back-button" style="visibility: hidden;">
-                <img src="assets/btn-retour.png" alt="Back">
-            </div>
-            <div class="logo">
-                <img src="assets/logo.png" alt="ALMUS Logo">
-            </div>
-        </nav>
-
-        <h1 class="main-title">WELCOME TO ALMUS 💧</h1>
-
-        <div class="welcome-container">
-            <div class="fingerprint-section">
-                <div class="fingerprint-scanner-main">
-                    <div class="pulse-ring"></div>
-                    <img src="assets/finger.png" alt="Fingerprint" class="fingerprint-icon-large">
-                </div>
-                <h2 class="scan-instruction">SCAN YOUR FINGER</h2>
-                <p class="scan-description">Place your finger on the scanner to begin</p>
-            </div>
-
-            <div class="divider">
-                <span>OR</span>
-            </div>
-
-            <div class="pin-section">
-                <h2 class="pin-title">ENTER YOUR PIN</h2>
-                <div class="pin-input-container">
-                    <input type="password" 
-                           id="pin-input" 
-                           class="pin-input" 
-                           placeholder="Enter 4-digit PIN" 
-                           maxlength="4" 
-                           pattern="[0-9]*"
-                           inputmode="numeric">
-                </div>
-                <button class="pin-submit-btn" onclick="verifyPin()">VERIFY</button>
-            </div>
+    <!-- Screen 0: Splash Screen with GIF -->
+    <div class="screen active" id="screen-splash">
+        <div class="splash-container">
+            <img src="assets/sponso.gif" alt="Sponsor" class="splash-gif">
         </div>
     </div>
 
-    <!-- Screen 1: Intensity Selection -->
-    <div class="screen" id="screen-intensity">
-        <nav class="top-nav">
-            <div class="back-button">
-                <img src="assets/btn-retour.png" alt="Back">
-            </div>
-            <div class="logo">
-                <img src="assets/logo.png" alt="ALMUS Logo">
-            </div>
-        </nav>
-
-        <h1 class="main-title">CUSTOM INTENSITY: MILD, CLASSIC, OR STRONG?</h1>
-
-        <div class="intensity-container">
-            <div class="intensity-option" data-intensity="mild">
-                <img src="assets/faible.png" alt="Mild" class="intensity-icon">
-            </div>
-
-            <div class="intensity-option" data-intensity="classic">
-                <img src="assets/moyenne.png" alt="Classic" class="intensity-icon">
-            </div>
-
-            <div class="intensity-option" data-intensity="strong">
-                <img src="assets/fort.png" alt="Strong" class="intensity-icon">
-            </div>
+    <!-- Screen 1: Fingerprint Authentication Screen -->
+    <div class="screen" id="screen-fingerprint">
+        <div class="logo-corner">
+            <img src="assets/logo.png" alt="ALMUS Logo" id="logo-btn">
         </div>
 
-        <div class="wave-decoration">
-            <img src="assets/eau.png" alt="Wave">
+        <div class="fingerprint-full-container">
+            <img src="assets/finger.png" alt="Fingerprint" class="fingerprint-full" id="fingerprint-img">
+            <h2 class="fingerprint-instruction">TAP TO SCAN YOUR FINGERPRINT</h2>
+        </div>
+    </div>
+
+    <!-- PIN Toast/Modal -->
+    <div class="pin-toast" id="pin-toast">
+        <div class="pin-toast-content">
+            <div class="pin-close" onclick="closeToast()">×</div>
+            <h2 class="pin-toast-title">ENTER PIN CODE</h2>
+            <div class="pin-display" id="pin-display">----</div>
+            <div class="pin-pad">
+                <button class="pin-btn" onclick="addPin('1')">1</button>
+                <button class="pin-btn" onclick="addPin('2')">2</button>
+                <button class="pin-btn" onclick="addPin('3')">3</button>
+                <button class="pin-btn" onclick="addPin('4')">4</button>
+                <button class="pin-btn" onclick="addPin('5')">5</button>
+                <button class="pin-btn" onclick="addPin('6')">6</button>
+                <button class="pin-btn" onclick="addPin('7')">7</button>
+                <button class="pin-btn" onclick="addPin('8')">8</button>
+                <button class="pin-btn" onclick="addPin('9')">9</button>
+                <button class="pin-btn pin-clear" onclick="clearPin()">⌫</button>
+                <button class="pin-btn" onclick="addPin('0')">0</button>
+                <button class="pin-btn pin-ok" onclick="submitPin()">✓</button>
+            </div>
         </div>
     </div>
 
@@ -132,7 +99,39 @@
         </div>
     </div>
 
-    <!-- Screen 3: Ingredients and Story -->
+    <!-- Screen 3: Intensity Selection -->
+    <div class="screen" id="screen-intensity">
+        <nav class="top-nav">
+            <div class="back-button">
+                <img src="assets/btn-retour.png" alt="Back">
+            </div>
+            <div class="logo">
+                <img src="assets/logo.png" alt="ALMUS Logo">
+            </div>
+        </nav>
+
+        <h1 class="main-title">CUSTOM INTENSITY: MILD, CLASSIC, OR STRONG?</h1>
+
+        <div class="intensity-container">
+            <div class="intensity-option" data-intensity="mild">
+                <img src="assets/faible.png" alt="Mild" class="intensity-icon">
+            </div>
+
+            <div class="intensity-option" data-intensity="classic">
+                <img src="assets/moyenne.png" alt="Classic" class="intensity-icon">
+            </div>
+
+            <div class="intensity-option" data-intensity="strong">
+                <img src="assets/fort.png" alt="Strong" class="intensity-icon">
+            </div>
+        </div>
+
+        <div class="wave-decoration">
+            <img src="assets/eau.png" alt="Wave">
+        </div>
+    </div>
+
+    <!-- Screen 4: Ingredients and Story -->
     <div class="screen" id="screen-ingredients">
         <nav class="top-nav">
             <div class="back-button">
@@ -164,7 +163,7 @@
         </button>
     </div>
 
-    <!-- Screen 4: Preparation / Thank You -->
+    <!-- Screen 5: Preparation / Thank You -->
     <div class="screen" id="screen-preparation">
         <nav class="top-nav">
             <div class="back-button">
@@ -196,7 +195,7 @@
         </div>
     </div>
 
-    <!-- Screen 5: Nutrition Facts -->
+    <!-- Screen 6: Nutrition Facts -->
     <div class="screen" id="screen-nutrition">
         <nav class="top-nav">
             <div class="back-button">

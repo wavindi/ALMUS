@@ -1,8 +1,9 @@
 // Screen navigation
-let currentScreen = 'screen-welcome';
+let currentScreen = 'screen-splash';
 let selectedIntensity = null;
 let selectedFlavor = null;
 let userAuthenticated = false;
+let pinCode = '';
 
 function showScreen(screenId) {
     // Hide all screens
@@ -18,96 +19,126 @@ function showScreen(screenId) {
     }
 }
 
-// Verify PIN function - goes directly to intensity screen
-function verifyPin() {
-    const pinInput = document.getElementById('pin-input');
-    const pin = pinInput.value;
+// PIN Toast Functions
+function openToast() {
+    const toast = document.getElementById('pin-toast');
+    toast.classList.add('active');
+    pinCode = '';
+    updatePinDisplay();
+}
 
-    if (pin.length === 4) {
-        // Simulate PIN verification
-        userAuthenticated = true;
+function closeToast() {
+    const toast = document.getElementById('pin-toast');
+    toast.classList.remove('active');
+    pinCode = '';
+    updatePinDisplay();
+}
 
-        // Show success feedback
-        pinInput.style.borderColor = '#28a745';
+function addPin(number) {
+    if (pinCode.length < 4) {
+        pinCode += number;
+        updatePinDisplay();
 
-        // Go DIRECTLY to intensity selection
-        setTimeout(() => {
-            showScreen('screen-intensity');
-            pinInput.value = '';
-            pinInput.style.borderColor = '#5c85d6';
-        }, 500);
+        // Auto-submit when 4 digits are entered
+        if (pinCode.length === 4) {
+            setTimeout(submitPin, 300);
+        }
+    }
+}
+
+function clearPin() {
+    if (pinCode.length > 0) {
+        pinCode = pinCode.slice(0, -1);
+        updatePinDisplay();
+    }
+}
+
+function updatePinDisplay() {
+    const display = document.getElementById('pin-display');
+    if (pinCode.length === 0) {
+        display.textContent = '----';
     } else {
-        // Show error
-        pinInput.style.borderColor = '#dc3545';
-        pinInput.placeholder = 'Please enter 4 digits';
-        setTimeout(() => {
-            pinInput.style.borderColor = '#5c85d6';
-            pinInput.placeholder = 'Enter 4-digit PIN';
-        }, 1500);
-    }
-}
-
-// Show registration (placeholder for future implementation)
-function showRegistration() {
-    alert('Registration feature coming soon! Please visit the reception desk to register.');
-}
-
-// Simulate fingerprint scan - goes directly to intensity screen
-document.addEventListener('DOMContentLoaded', function() {
-    const fingerprintScanner = document.querySelector('.fingerprint-scanner-main');
-
-    if (fingerprintScanner) {
-        fingerprintScanner.addEventListener('click', function() {
-            // Simulate scanning animation
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
-
-            // Go DIRECTLY to intensity selection after scan
-            setTimeout(() => {
-                userAuthenticated = true;
-                showScreen('screen-intensity');
-            }, 1500);
-        });
-    }
-
-    // Handle Enter key on PIN input
-    const pinInput = document.getElementById('pin-input');
-    if (pinInput) {
-        pinInput.addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                verifyPin();
+        let displayText = '';
+        for (let i = 0; i < 4; i++) {
+            if (i < pinCode.length) {
+                displayText += '●';
+            } else {
+                displayText += '-';
             }
-        });
-
-        // Only allow numbers
-        pinInput.addEventListener('input', function(event) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
+        }
+        display.textContent = displayText;
     }
-});
+}
+
+function submitPin() {
+    if (pinCode.length > 0) {
+        // Any PIN code entered goes to flavor screen
+        userAuthenticated = true;
+        closeToast();
+        showScreen('screen-flavor');
+        pinCode = '';
+    }
+}
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', function() {
-    // Intensity selection
-    const intensityOptions = document.querySelectorAll('.intensity-option');
-    intensityOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            selectedIntensity = this.dataset.intensity;
-            console.log('Selected intensity:', selectedIntensity);
+
+    // Splash screen - click anywhere goes to fingerprint screen
+    const splashContainer = document.querySelector('.splash-container');
+    if (splashContainer) {
+        splashContainer.addEventListener('click', function() {
+            showScreen('screen-fingerprint');
+        });
+    }
+
+    // Logo on fingerprint screen - opens PIN toast
+    const logoBtn = document.getElementById('logo-btn');
+    if (logoBtn) {
+        logoBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openToast();
+        });
+    }
+
+    // Fingerprint image - click goes to flavor screen
+    const fingerprintImg = document.getElementById('fingerprint-img');
+    if (fingerprintImg) {
+        fingerprintImg.addEventListener('click', function() {
             showScreen('screen-flavor');
         });
-    });
+    }
 
-    // Flavor selection
+    // Fingerprint container (not just image) - also clickable
+    const fingerprintContainer = document.querySelector('.fingerprint-full-container');
+    if (fingerprintContainer) {
+        fingerprintContainer.addEventListener('click', function(e) {
+            // Don't trigger if clicking on logo
+            if (!e.target.closest('.logo-corner')) {
+                showScreen('screen-flavor');
+            }
+        });
+    }
+
+    // Flavor selection - NEW: Goes to INTENSITY screen
     const flavorOptions = document.querySelectorAll('.flavor-option');
     flavorOptions.forEach(option => {
         option.addEventListener('click', function() {
             selectedFlavor = this.dataset.flavor;
             console.log('Selected flavor:', selectedFlavor);
 
-            // Move to preparation screen
+            // After flavor, go to INTENSITY screen
+            showScreen('screen-intensity');
+        });
+    });
+
+    // Intensity selection - Goes to PREPARATION screen
+    const intensityOptions = document.querySelectorAll('.intensity-option');
+    intensityOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            selectedIntensity = this.dataset.intensity;
+            console.log('Selected intensity:', selectedIntensity);
+
+            // After intensity, go to PREPARATION screen
             showScreen('screen-preparation');
         });
     });
@@ -117,14 +148,24 @@ document.addEventListener('DOMContentLoaded', function() {
     backButtons.forEach(button => {
         button.addEventListener('click', goBack);
     });
+
+    // Close toast when clicking outside
+    const pinToast = document.getElementById('pin-toast');
+    if (pinToast) {
+        pinToast.addEventListener('click', function(e) {
+            if (e.target === pinToast) {
+                closeToast();
+            }
+        });
+    }
 });
 
 function goBack() {
     const screenOrder = [
-        'screen-welcome',
-        'screen-intensity',
+        'screen-splash',
+        'screen-fingerprint',
         'screen-flavor',
-        'screen-ingredients',
+        'screen-intensity',
         'screen-preparation',
         'screen-nutrition'
     ];
@@ -139,13 +180,14 @@ function resetApp() {
     selectedIntensity = null;
     selectedFlavor = null;
     userAuthenticated = false;
-    showScreen('screen-welcome');
+    pinCode = '';
+    showScreen('screen-splash');
 }
 
 // Add touch feedback for mobile
 document.addEventListener('DOMContentLoaded', function() {
     const clickableElements = document.querySelectorAll(
-        '.intensity-option, .flavor-option, .back-button, .next-button, .taste-button, .restart-button, .pin-submit-btn, .register-btn, .fingerprint-scanner-main'
+        '.intensity-option, .flavor-option, .back-button, .next-button, .taste-button, .restart-button, .pin-btn, .logo-corner, .splash-container, .fingerprint-full, .fingerprint-full-container'
     );
 
     clickableElements.forEach(element => {
@@ -165,3 +207,39 @@ document.addEventListener('touchmove', function(event) {
         event.preventDefault();
     }
 }, { passive: false });
+
+// Keyboard support
+document.addEventListener('keydown', function(e) {
+    const toast = document.getElementById('pin-toast');
+
+    // Splash screen - press any key to go to fingerprint
+    if (currentScreen === 'screen-splash' && !toast.classList.contains('active')) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            showScreen('screen-fingerprint');
+        }
+    }
+
+    // Fingerprint screen shortcuts
+    if (currentScreen === 'screen-fingerprint' && !toast.classList.contains('active')) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            // Space/Enter - go to flavor (like clicking fingerprint)
+            showScreen('screen-flavor');
+        } else if (e.key === 'p' || e.key === 'P') {
+            // Press 'P' to open PIN
+            openToast();
+        }
+    }
+
+    // PIN toast keyboard controls
+    if (toast && toast.classList.contains('active')) {
+        if (e.key >= '0' && e.key <= '9') {
+            addPin(e.key);
+        } else if (e.key === 'Backspace') {
+            clearPin();
+        } else if (e.key === 'Enter') {
+            submitPin();
+        } else if (e.key === 'Escape') {
+            closeToast();
+        }
+    }
+});

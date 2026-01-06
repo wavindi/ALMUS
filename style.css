@@ -10,7 +10,8 @@ html, body {
     height: 100vh;
     overflow: hidden;
     font-family: 'Arial', 'Helvetica', sans-serif;
-    background: linear-gradient(135deg, #1db8e8 0%, #4fc3f7 100%);
+    background: url('assets/back.png') no-repeat center center fixed;
+    background-size: cover;
 }
 
 /* Screen Management */
@@ -18,7 +19,7 @@ html, body {
     display: none;
     width: 100vw;
     height: 100vh;
-    padding: 1vh;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
@@ -37,6 +38,215 @@ html, body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Splash Screen - FULL SCREEN */
+#screen-splash {
+    padding: 0;
+}
+
+.splash-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    cursor: pointer;
+    position: relative;
+}
+
+.splash-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fingerprint Authentication Screen */
+#screen-fingerprint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logo-corner {
+    position: absolute;
+    top: 3vh;
+    left: 3vw;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 100;
+}
+
+.logo-corner:hover {
+    transform: scale(1.15);
+}
+
+.logo-corner img {
+    height: 12vh;
+    width: auto;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6));
+}
+
+.fingerprint-full-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 4vh;
+}
+
+.fingerprint-full {
+    max-width: 50vw;
+    max-height: 50vh;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    animation: pulse-glow 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.fingerprint-full:hover {
+    transform: scale(1.05);
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    }
+    50% {
+        filter: drop-shadow(0 25px 50px rgba(93, 133, 214, 0.7));
+    }
+}
+
+.fingerprint-instruction {
+    color: #0d47a1;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: bold;
+    text-align: center;
+    background: rgba(173, 216, 230, 0.8);
+    padding: 2vh 4vw;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: pulse-text 2s infinite;
+}
+
+@keyframes pulse-text {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* PIN Toast/Modal */
+.pin-toast {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.pin-toast.active {
+    display: flex;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.pin-toast-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+    border-radius: 30px;
+    padding: 5vh 6vw;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    position: relative;
+    min-width: 40vw;
+}
+
+.pin-close {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    font-size: 3rem;
+    color: #0d47a1;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.pin-close:hover {
+    transform: scale(1.2);
+}
+
+.pin-toast-title {
+    text-align: center;
+    color: #0d47a1;
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 3vh;
+    font-weight: bold;
+}
+
+.pin-display {
+    background: white;
+    border: 0.4vh solid #5c85d6;
+    border-radius: 15px;
+    padding: 3vh 4vw;
+    text-align: center;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    letter-spacing: 2vw;
+    color: #0d47a1;
+    font-weight: bold;
+    margin-bottom: 4vh;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vh 2vw;
+}
+
+.pin-btn {
+    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 3vh 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.pin-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.pin-btn:active {
+    transform: scale(0.95);
+}
+
+.pin-clear {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+}
+
+.pin-ok {
+    background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
 }
 
 /* Top Navigation */
@@ -81,174 +291,13 @@ html, body {
     max-width: 90%;
 }
 
-/* Welcome/PIN Screen - Fully Responsive */
-.welcome-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    max-width: 95vw;
-    margin: 0 auto;
-    padding: 2vh 3vw;
-    gap: 5vw;
-    height: calc(100vh - 20vh);
-}
-
-.fingerprint-section {
-    flex: 1;
-    text-align: center;
-}
-
-.fingerprint-scanner-main {
-    width: min(30vh, 20vw);
-    height: min(30vh, 20vw);
-    border-radius: 50%;
-    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin: 0 auto 2vh;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.fingerprint-scanner-main:hover {
-    transform: scale(1.05);
-}
-
-.fingerprint-scanner-main .pulse-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 0.5vh solid rgba(255,255,255,0.5);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-}
-
-.fingerprint-icon-large {
-    width: 70%;
-    height: 70%;
-    object-fit: contain;
-    z-index: 10;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
-
-.scan-instruction {
-    color: #0d47a1;
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    font-weight: bold;
-    margin-bottom: 1.5vh;
-}
-
-.scan-description {
-    color: #1976d2;
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-}
-
-.divider {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-.divider::before {
-    content: '';
-    width: 0.3vw;
-    height: 25vh;
-    background: linear-gradient(to bottom, transparent, #0d47a1, transparent);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.divider span {
-    background: rgba(173, 216, 230, 0.9);
-    color: #0d47a1;
-    padding: 1.8vh 2.5vw;
-    border-radius: 50%;
-    font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-    font-weight: bold;
-    z-index: 10;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.pin-section {
-    flex: 1;
-    text-align: center;
-}
-
-.pin-title {
-    color: #0d47a1;
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    font-weight: bold;
-    margin-bottom: 3vh;
-}
-
-.pin-input-container {
-    margin-bottom: 3vh;
-}
-
-.pin-input {
-    width: 90%;
-    max-width: 380px;
-    padding: 2.5vh 2vw;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-    text-align: center;
-    border: 0.3vh solid #5c85d6;
-    border-radius: 15px;
-    background: white;
-    color: #0d47a1;
-    font-weight: bold;
-    letter-spacing: 0.8vw;
-    transition: all 0.3s;
-}
-
-.pin-input:focus {
-    outline: none;
-    border-color: #0d47a1;
-    box-shadow: 0 0 20px rgba(93, 133, 214, 0.4);
-}
-
-.pin-input::placeholder {
-    letter-spacing: normal;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
-    color: #aaa;
-}
-
-.pin-submit-btn {
-    background: linear-gradient(135deg, #5c85d6 0%, #4a5fc7 100%);
-    color: white;
-    border: none;
-    padding: 2.2vh 6vw;
-    border-radius: 50px;
-    font-size: clamp(1.2rem, 1.8vw, 1.8rem);
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s;
-}
-
-.pin-submit-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-
-.pin-submit-btn:active {
-    transform: scale(0.98);
+/* Screens with padding */
+#screen-flavor,
+#screen-intensity,
+#screen-ingredients,
+#screen-preparation,
+#screen-nutrition {
+    padding: 1vh;
 }
 
 /* Intensity Selection Screen */
@@ -577,22 +626,17 @@ html, body {
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
-    .welcome-container {
-        flex-direction: column;
-        gap: 4vh;
-        height: calc(100vh - 15vh);
+    .pin-toast-content {
+        min-width: 60vw;
     }
 
-    .divider::before {
-        width: 30vw;
-        height: 0.3vh;
-        transform: translateX(-50%);
-        left: 50%;
+    .logo-corner img {
+        height: 10vh;
     }
 
-    .fingerprint-scanner-main {
-        width: 25vh;
-        height: 25vh;
+    .fingerprint-full {
+        max-width: 60vw;
+        max-height: 60vh;
     }
 }
 
@@ -608,6 +652,23 @@ html, body {
 
     .main-title {
         font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+
+    .pin-toast-content {
+        min-width: 80vw;
+    }
+
+    .logo-corner img {
+        height: 8vh;
+    }
+
+    .fingerprint-full {
+        max-width: 70vw;
+        max-height: 60vh;
+    }
+
+    .fingerprint-instruction {
+        font-size: clamp(1.5rem, 4vw, 2rem);
     }
 }
 
